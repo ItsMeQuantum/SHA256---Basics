@@ -32,3 +32,6 @@ def generate_btc_address():
     return private_key_bytes.hex(), address.decode()
 
 
+priv, addr = generate_btc_address()
+print("Private Key:", priv)
+print("Bitcoin Address:", addr)
