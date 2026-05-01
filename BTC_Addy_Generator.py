@@ -35,3 +35,22 @@ def generate_btc_address():
 priv, addr = generate_btc_address()
 print("Private Key:", priv)
 print("Bitcoin Address:", addr)
+
+
+
+
+def private_key_to_wif(private_key_hex):
+    private_key_bytes = bytes.fromhex(private_key_hex)
+
+    
+    extended_key = b'\x80' + private_key_bytes
+
+    
+    checksum = hashlib.sha256(hashlib.sha256(extended_key).digest()).digest()[:4]
+
+    
+    wif = base58.b58encode(extended_key + checksum)
+
+    return wif.decode()
+
+
