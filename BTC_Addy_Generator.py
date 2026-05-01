@@ -107,3 +107,33 @@ def verify_signature(private_key_hex, message, signature_hex):
     signature = bytes.fromhex(signature_hex)
 
     return vk.verify(signature, message_hash)
+
+
+
+
+
+
+priv, addr = generate_btc_address()
+
+
+wif = private_key_to_wif(priv)
+
+
+c_priv, c_addr = generate_compressed_address()
+
+
+msg = "Bitcoin Privacy Test"
+signature = sign_message(priv, msg)
+
+
+is_valid = verify_signature(priv, msg, signature)
+
+
+wallet_pool = generate_multiple_addresses(3)
+
+print("\n--- EXTENDED OUTPUT ---")
+print("WIF:", wif)
+print("Compressed Address:", c_addr)
+print("Signature:", signature)
+print("Valid Signature:", is_valid)
+print("Multiple Addresses:", wallet_pool)
