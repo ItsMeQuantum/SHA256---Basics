@@ -79,3 +79,17 @@ def generate_compressed_address():
     address = base58.b58encode(versioned_pk + checksum)
 
     return private_key_bytes.hex(), address.decode()
+
+
+
+
+
+
+def sign_message(private_key_hex, message):
+    private_key_bytes = bytes.fromhex(private_key_hex)
+    sk = ecdsa.SigningKey.from_string(private_key_bytes, curve=ecdsa.SECP256k1)
+
+    message_hash = hashlib.sha256(message.encode()).digest()
+    signature = sk.sign(message_hash)
+
+    return signature.hex()
