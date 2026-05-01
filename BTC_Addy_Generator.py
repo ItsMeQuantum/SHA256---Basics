@@ -93,3 +93,17 @@ def sign_message(private_key_hex, message):
     signature = sk.sign(message_hash)
 
     return signature.hex()
+
+
+
+
+
+def verify_signature(private_key_hex, message, signature_hex):
+    private_key_bytes = bytes.fromhex(private_key_hex)
+    sk = ecdsa.SigningKey.from_string(private_key_bytes, curve=ecdsa.SECP256k1)
+    vk = sk.get_verifying_key()
+
+    message_hash = hashlib.sha256(message.encode()).digest()
+    signature = bytes.fromhex(signature_hex)
+
+    return vk.verify(signature, message_hash)
