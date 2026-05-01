@@ -17,3 +17,10 @@ Here are some of the most important characteristics about the SHA-256 that makes
 Digest Length: This says that the length of the hash should be based on the naming convention, for example, the 256 bits is to be used in the SHA-256 and 512 bits in the SHA-512 and so on.
 
 Irreversible Quality: This says that the functions such as the SHA-256 are irreversible which means that you should not get a plain text when you get access to the digest and you should not get the original value by passing it through the hash function as well.
+
+
+
+##Don't read those Codes , You are going to waste your time
+##Thanks
+
+##Quantum HERE
